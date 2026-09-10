@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>O Mistério da Padaria Central</title>
+
+    <style>
+         {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #151515;
+            color: #eeeeee;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #0b0b0b;
+            padding: 25px;
+            text-align: center;
+            border-bottom: 2px solid #8b6f47;
+        }
+
+        header h1 {
+            color: #d6b477;
+            font-size: 36px;
+        }
+
+        header p {
+            color: #aaa;
+            margin-top: 8px;
+        }
+
+        nav {
+            background: #111;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav a {
+            color: #ddd;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #d6b477;
+        }
+
+        .hero {
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),
+                radial-gradient(circle, #514331, #151515 70%);
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            color: #d6b477;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            color: #ddd;
+        }
+
+        .botao {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background: #8b6f47;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .botao:hover {
+            background: #b28d5c;
+            transform: scale(1.05);
+        }
+
+        section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 60px 20px;
+        }
+
+        section h2 {
+            color: #d6b477;
+            font-size: 32px;
+            margin-bottom: 25px;
+            border-left: 5px solid #8b6f47;
+            padding-left: 12px;
+        }
+
+        .caso {
+            background: #202020;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+
+        .caso p {
+            margin-bottom: 15px;
+        }
+
+        .destaque {
+            color: #d6b477;
+            font-weight: bold;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #202020;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #8b6f47;
+        }
+
+        .card h3 {
+            color: #d6b477;
+            margin-bottom: 10px;
+        }
+
+        .suspeito {
+            border-top: 4px solid #8b6f47;
+        }
+
+        .pista {
+            position: relative;
+        }
+
+        .numero {
+            font-size: 30px;
+            color: #8b6f47;
+            font-weight: bold;
+        }
+
+        .resolver {
+            background: #202020;
+            border: 1px solid #444;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 8px;
+            color: #ccc;
+        }
+
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            background: #111;
+            color: white;
+            border: 1px solid #555;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #8b6f47;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #b28d5c;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 6px;
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #0b0b0b;
+            color: #888;
+            border-top: 1px solid #333;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 27px;
+            }
+
+            .hero h2 {
+                font-size: 34px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🕵️ ARQUIVO 017</h1>
+        <p>O Mistério da Padaria Central</p>
+    </header>
+
+    <nav>
+        <a href="#caso">O Caso</a>
+        <a href="#suspeitos">Suspeitos</a>
+        <a href="#pistas">Pistas</a>
+        <a href="#resolver">Resolver</a>
+    </nav>
+
+    <main>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h2>O Mistério da Padaria Central</h2>
+
+                <p>
+                    Uma noite. Uma padaria vazia.
+                    Um objeto desaparecido.
+                    Quatro suspeitos.
+                </p>
+
+                <a href="#caso" class="botao">
+                    INVESTIGAR O CASO
+                </a>
+            </div>
+        </section>
+
+        <section id="caso">
+
+            <h2>O Caso</h2>
+
+            <div class="caso">
+
+                <p>
+                    Na manhã de uma segunda-feira, a proprietária da
+                    <span class="destaque">Padaria Central</span>
+                    percebeu que uma antiga caixa de moedas havia desaparecido
+                    do escritório.
+                </p>
+
+                <p>
+                    Segundo a proprietária, a caixa estava no local quando
+                    ela fechou a padaria às <span class="destaque">21:30</span>.
+                </p>
+
+                <p>
+                    Naquela noite, quatro pessoas tinham motivos para estar
+                    próximas ao estabelecimento.
+                </p>
+
+                <p>
+                    O problema?
+                    <span class="destaque">
+                        A câmera de segurança parou de funcionar exatamente
+                        às 21:42.
+                    </span>
+                </p>
+
+            </div>
+
+        </section>
+
+        <section id="suspeitos">
+
+            <h2>👤 Suspeitos</h2>
+
+            <div class="grid">
+
+                <div class="card suspeito">
+                    <h3>01 — Marcos</h3>
+
+                    <p>
+                        Ex-funcionário da padaria.
+                    </p>
+
+                    <p>
+                        Diz que passou pela rua às 21:40,
+                        mas afirma que não entrou no estabelecimento.
+                    </p>
+                </div>
+
+                <div class="card suspeito">
+                    <h3>02 — Clara</h3>
+
+                    <p>
+                        Funcionária atual.
+                    </p>
+
+                    <p>
+                        Possuía uma chave reserva da porta dos fundos.
+                    </p>
+                </div>
+
+                <div class="card suspeito">
+                    <h3>03 — Rafael</h3>
+
+                    <p>
+                        Entregador que trabalhava para a padaria.
+                    </p>
+
+                    <p>
+                        Diz ter deixado uma encomenda às 21:35.
+                    </p>
+                </div>
+
+                <div class="card suspeito">
+                    <h3>04 — Helena</h3>
+
+                    <p>
+                        Moradora do prédio ao lado.
+                    </p>
+
+                    <p>
+                        Afirma ter ouvido um barulho metálico
+                        por volta das 21:45.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="pistas">
+
+            <h2>🔎 Pistas Encontradas</h2>
+
+            <div class="grid">
+
+                <div class="card pista">
+                    <div class="numero">01</div>
+
+                    <h3>Relógio quebrado</h3>
+
+                    <p>
+                        Um relógio encontrado no escritório estava parado
+                        exatamente às 21:44.
+                    </p>
+                </div>
+
+                <div class="card pista">
+                    <div class="numero">02</div>
+
+                    <h3>Marca na porta</h3>
+
+                    <p>
+                        A porta dos fundos apresentava uma pequena marca
+                        próxima à fechadura.
+                    </p>
+                </div>
+
+                <div class="card pista">
+                    <div class="numero">03</div>
+
+                    <h3>Recibo</h3>
+
+                    <p>
+                        Um recibo foi encontrado perto do escritório,
+                        registrado às 21:37.
+                    </p>
+                </div>
+
+                <div class="card pista">
+                    <div class="numero">04</div>
+
+                    <h3>Câmera</h3>
+
+                    <p>
+                        A gravação foi interrompida às 21:42
+                        e voltou às 21:51.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="resolver">
+
+            <h2>🧩 Resolva o Caso</h2>
+
+            <div class="resolver">
+
+                <p>
+                    Analise as pistas e escolha quem você acredita
+                    ser o principal suspeito.
+                </p>
+
+                <label for="suspeito">
+                    Quem você suspeita?
+                </label>
+
+                <select id="suspeito">
+
+                    <option value="">
+                        Escolha um suspeito
+                    </option>
+
+                    <option value="Marcos">
+                        Marcos
+                    </option>
+
+                    <option value="Clara">
+                        Clara
+                    </option>
+
+                    <option value="Rafael">
+                        Rafael
+                    </option>
+
+                    <option value="Helena">
+                        Helena
+                    </option>
+
+                </select>
+
+                <label for="teoria">
+                    Qual é a sua teoria?
+                </label>
+
+                <textarea
+                    id="teoria"
+                    placeholder="Explique como você acha que o caso aconteceu..."
+                ></textarea>
+
+                <button onclick="resolverCaso()">
+                    🔍 Verificar minha teoria
+                </button>
+
+                <div id="resultado"></div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <p>
+            ARQUIVO 017 — Projeto fictício para entretenimento.
+        </p>
+
+        <p>
+            Nenhum caso real é representado neste site.
+        </p>
+
+    </footer>
+
+    <script>
+
+        function resolverCaso() {
+
+            const suspeito =
+                document.getElementById("suspeito").value;
+
+            const teoria =
+                document.getElementById("teoria").value;
+
+            const resultado =
+                document.getElementById("resultado");
+
+            if (suspeito === "") {
+
+                resultado.style.display = "block";
+                resultado.innerHTML =
+                    "⚠️ Escolha um suspeito primeiro.";
+
+                return;
+            }
+
+            if (teoria.trim() === "") {
+
+                resultado.style.display = "block";
+                resultado.innerHTML =
+                    "📝 Escreva sua teoria antes de continuar.";
+
+                return;
+            }
+
+            resultado.style.display = "block";
+
+            if (suspeito === "Clara") {
+
+                resultado.innerHTML =
+                    "🔎 Você encontrou uma possibilidade interessante! " +
+                    "As pistas relacionadas à chave reserva e à porta dos fundos " +
+                    "fazem Clara merecer uma investigação mais profunda.";
+
+            } else {
+
+                resultado.innerHTML =
+                    "🕵️ Sua teoria foi registrada! " +
+                    "Mas algumas pistas ainda não combinam completamente " +
+                    "com sua escolha. Talvez seja necessário investigar novamente.";
+
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
